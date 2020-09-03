@@ -15,7 +15,6 @@ export const Container = styled.div`
       }
       background: linear-gradient(155deg, rgba(212,204,255,1) 0%, rgba(188,175,255,1) 96%);
       margin-right: 10px;
-      justify-content: space-between;
       width: 40%;
       height: 30vh;
       border-radius: 15px;

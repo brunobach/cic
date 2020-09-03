@@ -10,6 +10,7 @@ const BookView: React.FC = () => {
 
     const [info, setInfo] = useState([0, 0, 0])
     const [topPublisher, setTopPublisher] = useState<string[]>([])
+    const [booksPublisher, setBooksPubliser] = useState({})
     const [tableData, setTableData] = useState([])
     const [viewTable, setViewTable] = useState(false)
 
@@ -48,7 +49,8 @@ const BookView: React.FC = () => {
         let topResult = objectSort.filter((val, index) => {
             if (index <= 4) return val
         })
-
+        console.log(counts)
+        setBooksPubliser(counts)
         setTopPublisher(topResult)
     }, [])
 
@@ -132,7 +134,7 @@ const BookView: React.FC = () => {
 
                         {
                             topPublisher.map((val) => (
-                                <PublishingHouse> {publisher[Number(val)].name} </PublishingHouse>
+                                <PublishingHouse> {publisher[Number(val)].name} {booksPublisher[Number(val)]} </PublishingHouse>
                             ))
                         }
 

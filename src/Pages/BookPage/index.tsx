@@ -48,14 +48,31 @@ const columns = [{
 
 const BookPage: React.FC = () => {
     const history = useHistory()
-    const { id } = useParams();
+    const { id } = useParams()
     const [book, setBook] = useState<book[]>([])
     const [dataTable, setDatable] = useState<book[]>([])
-
     useEffect(() => {
+        const localData = localStorage.getItem('BooksViews')
+        
+        if(localData === null){
+            localStorage.setItem('BooksViews', [id].toString())
+        }else if(localData.length < 14) {
+            const splitLength = localData.split(',')
+            if(splitLength.length < 5){
+                localStorage.setItem('BooksViews', `${localData},${id}`)
+            }
+            
+        }else {
+            const splitLengthRemove = localData.split(',')
+            splitLengthRemove.shift()
+            localStorage.setItem('BooksViews', `${splitLengthRemove},${id}`)
+        }
+
         const result = data.filter((val) => val._id === id)
-        setBook(result)   
-        setDatable(data)     
+        setBook(result)
+        setDatable(data)
+        
+            
     }, [id])
     
     const tableRowEvents = {
