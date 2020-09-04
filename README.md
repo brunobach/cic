@@ -24,11 +24,16 @@
   </a>
 </p>
 
+<h1 align="center">
+    <img alt="Desafio CIC" title="Desafio CIC" src=".github/cic.png" />
+</h1>
+
 ## Funcionalidades
 - :heavy_check_mark: Exibir todas as editoras junto com a média de avaliação dos seus livros : Funcionalidade Disponível ao Clicar sobre a Seta de Rolagem para baixo.
 
 - :heavy_check_mark: Possibilidade de filtrar pelo nome da editora : Funcionalidade Disponível no Header da Tabela de todas as editoras.
-:heavy_check_mark: Possibilidade de ordenar pelas editoras mais bem avaliadas : Ao clicar sobre o Header da tabela reorganizará os itens.
+
+-:heavy_check_mark: Possibilidade de ordenar pelas editoras mais bem avaliadas : Ao clicar sobre o Header da tabela reorganizará os itens.
 
 - :heavy_check_mark: Possibilidade de filtrar pelo título e nome da editora : Com o input de pesquisa é possivel realizar a pesquisa do título do livro.
 
