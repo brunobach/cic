@@ -66,12 +66,13 @@ const BookView: React.FC = () => {
                 } 
             })    
         })
+        console.log(idRealData, idData)
         setIdRealData(idData.reverse())
     }
     }, [booksData])
 
     function randomNumber() {
-        const maxNumber: number = 45
+        const maxNumber: number = 500
         const minNumber: number = 1
         return Math.floor(Math.random() * (maxNumber - minNumber) + minNumber)
     }

@@ -7,6 +7,7 @@ export const Container = styled.div`
   margin-top: 30px;
 
   >img {
+    cursor: pointer;
     margin-left: 30px;
     width: auto;
     max-width: 65px;

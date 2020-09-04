@@ -54,6 +54,7 @@ const BookPage: React.FC = () => {
     const { id } = useParams()
     const [book, setBook] = useState<book[]>([])
     const [booksData, setBooksData] = useState<book[]>([])
+    const [idReal, setIdReal] = useState(0)
 
     useEffect(() => {
         async function loadData() {
@@ -69,6 +70,7 @@ const BookPage: React.FC = () => {
         let idData
         booksData.filter((book, index) => {
             if(book._id === id){
+                setIdReal(index)
                 return idData = index
             }  
         })
@@ -110,7 +112,7 @@ const BookPage: React.FC = () => {
                 <BookContent>
                     <BookImage></BookImage>
                     <BookInfo>
-                    <BookBox title={book[0].title} url={url[id]} stars={book[0].avgRatings} author={book[0].authors} publishing={publisher[Number(book[0].publisher)].name} variant="Page" ></BookBox> 
+                    <BookBox title={book[0].title} url={url[idReal]} id={id} stars={book[0].avgRatings} author={book[0].authors} publishing={publisher[Number(book[0].publisher)].name} variant="Page" ></BookBox> 
                     </BookInfo>
                 </BookContent>
             ))}

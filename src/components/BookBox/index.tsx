@@ -20,7 +20,7 @@ const BookBox: React.FC<Props> = ({variant, title, author, publishing, stars, id
       <BookCover className={variant}>
           <img src={url || 'https://developerplus.com.br/wp-content/uploads/2019/05/clean-code-642x1024.png'} alt="Cover Livro"/>
       </BookCover>
-      <Info>
+      <Info className={variant}>
           <TitleInfo className={variant}>
               <p>{title}</p>
               <span>{author}</span>

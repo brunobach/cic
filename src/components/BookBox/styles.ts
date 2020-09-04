@@ -119,8 +119,9 @@ export const Container = styled.div`
     height: 40vh;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
-    background: linear-gradient(129deg, rgba(67,44,135,1) 0%, rgba(107,37,148,1) 98%);
-    box-shadow: -3px 29px 90px -26px rgba(128,29,186,1);
+    background: rgb(38,1,69);
+background: linear-gradient(129deg, rgba(38,1,69,1) 29%, rgba(81,5,144,1) 98%);
+box-shadow: -13px 45px 83px -24px rgba(76,29,116,1);
   }
 `;
 
@@ -151,10 +152,10 @@ export const BookCover = styled.div`
 
     &.Page {
       > img {
-      box-shadow: -3px 29px 70px -22px rgba(5,5,5,1);
+      box-shadow: -8px 30px 83px -20px rgba(0,0,0,1);
       border-radius: 10px;
-      max-width: 100%;
-     height: auto;
+      max-width: 300px;
+      height: auto;
     }
     }
 
@@ -164,10 +165,27 @@ export const BookCover = styled.div`
     
 `
 export const Info = styled.div`
+   &.Page {
+      margin-left: 150px;
+  }
     margin-top: 10px;
     margin-left: 10px;
+    
 `
 export const TitleInfo = styled.div`
+&.Page{
+  margin-top: 50px;
+  p {
+    color: #fff;
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: 25px;
+  }
+  span {
+    color: #fff;
+    font-family: Poppins;
+  }
+}
 &.none { 
   p {
     color: red;
@@ -192,6 +210,7 @@ span {
 `
 
 export const DetailInfo = styled.div`
+
 span{
   font-family: Poppins;
   color: #ffff;
