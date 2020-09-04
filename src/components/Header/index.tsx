@@ -65,6 +65,7 @@ const Header: React.FC = () => {
             <img onClick={() => history.push('/')} src={Logo} />
             <SearchInput  value={searchText} className={resultInfo.length > 1 ? 'search-activated mx-auto' : 'search-off mx-auto'} onChange={(e) => setSerchText(e.target.value)} placeholder="Pesquisar" />
             <SearchContent className="mx-auto">
+            
             {resultInfo.map((val, index) => (
                 
                 <SearchItem onClick={() => handleClickedSearch(val._id)} key={val._id} className={index === 0 ? 'first-li' : 'last-li' }>
@@ -72,7 +73,8 @@ const Header: React.FC = () => {
                 </SearchItem>
                
             ))}
-             </SearchContent>
+             
+             </SearchContent>  
         </Container>)
         ;
 }

@@ -4,7 +4,7 @@ import  BootstrapTable from 'react-bootstrap-table-next'
 import filterFactory, {numberFilter, dateFilter, Comparator, textFilter} from 'react-bootstrap-table2-filter'
 import { useParams, useHistory } from 'react-router-dom';
 
-import { Container, BookViewer, BookContent, BookImage, BookInfo } from './styles';
+import { Container, BookViewer, BookContent, BookAll, BookInfo } from './styles';
 import Header from '../../components/Header'
 
 import publisher from '../../data/publisher'
@@ -110,10 +110,10 @@ const BookPage: React.FC = () => {
         {booksData.length > 1 ? <BookViewer>
             {id === 'all' ? <BootstrapTable classes="tb-bootstrap w-75 center mx-auto table-borderless table-dark shadow p-3" bootstrap4 striped hover condensed rowEvents={tableRowEvents} keyField='_id' data={booksData} columns={columns} filter={filterFactory()} /> : book.map((val) => (
                 <BookContent>
-                    <BookImage></BookImage>
                     <BookInfo>
-                    <BookBox title={book[0].title} url={url[idReal]} id={id} stars={book[0].avgRatings} author={book[0].authors} publishing={publisher[Number(book[0].publisher)].name} variant="Page" ></BookBox> 
+                    <BookBox title={book[0].title} date={book[0].publicationDate} numRatings={book[0].numRatings} numPages={book[0].numPages} url={url[idReal]} id={id} stars={book[0].avgRatings} author={book[0].authors} publishing={publisher[Number(book[0].publisher)].name} variant="Page" ></BookBox> 
                     </BookInfo>
+                    <BookAll onClick={() => history.push(`/book/all`)} > Ver todos os livros </BookAll>
                 </BookContent>
             ))}
         </BookViewer> : <div className="ml-5 spinner-grow text-success"> </div>}

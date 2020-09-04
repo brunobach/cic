@@ -11,9 +11,12 @@ interface Props {
     stars?: number
     id?: number
     url?: string
+    numRatings?: number
+    numPages?: number
+    date?: string
 }
 
-const BookBox: React.FC<Props> = ({variant, title, author, publishing, stars, id, url}) => {
+const BookBox: React.FC<Props> = ({variant, title, author, publishing, stars, id, url, numRatings, numPages, date}) => {
   const history = useHistory()
   return (
   <Container onClick={() => history.push(`/book/${id}`)} className={variant}>
@@ -36,6 +39,9 @@ const BookBox: React.FC<Props> = ({variant, title, author, publishing, stars, id
                 starRatedColor="yellow"
                 starSpacing="5px" />}
           <DetailInfo className={variant}>
+          {numRatings ? <> <span>Avaliado por {numRatings} pessoas </span>
+          <span>N. de Páginas {numPages} </span>
+          <span>Publicado em {date} </span> </> : ''}
           <span> Editora {publishing}</span>
           </DetailInfo>
       </Info>

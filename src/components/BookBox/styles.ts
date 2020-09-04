@@ -215,7 +215,10 @@ span{
   font-family: Poppins;
   color: #ffff;
 }
-
+&.Page{
+  display: flex;
+  flex-direction: column;
+}
 &.none { 
   span {
     color: #fff;
