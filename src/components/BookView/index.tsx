@@ -159,7 +159,7 @@ const BookView: React.FC = () => {
         <Container>
             
             {booksData.length > 1 ? <>
-            <p className="ml-5">Recomendacoes</p>
+            <p className="ml-5">Recomendações</p>
             <ContentBook>
                 <BookBox title={booksData[info[0]].title} id={Number(booksData[info[0]]._id)} url={url[info[0]]} stars={booksData[info[0]].avgRatings || 5} author={booksData[info[0]].authors} publishing={publisherData[Number(booksData[info[0]].publisher)].name} variant="box"></BookBox>
                 <BookBox title={booksData[info[1]].title} id={Number(booksData[info[1]]._id)} url={url[info[1]]} stars={booksData[info[1]].avgRatings || 5} author={booksData[info[1]].authors} publishing={publisherData[Number(booksData[info[1]].publisher)].name} variant="box"></BookBox>
@@ -178,7 +178,7 @@ const BookView: React.FC = () => {
 
                     {recentView.length > 1 ?  recentView.map((recent, index)=> (
                         <BookBox title={booksData[Number(recent)].title} url={url[recent]} id={idRealData[index]} stars={booksData[Number(recent)].avgRatings || 5} author={booksData[Number(recent)].authors} publishing={publisherData[Number(booksData[recent].publisher)].name} variant="none"></BookBox>
-                    )) : <p className="mx-auto">Que Pena... Você ainda nao tem recentes</p>}
+                    )) : <p className="mx-auto">Que Pena... Você ainda não tem recentes</p>}
                     
                     <TopPublishingHouse>
                         <p>Top Editoras</p>
