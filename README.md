@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="Desafio CIC" title="Desafio CIC" src="https://cic.perdcomp.com.br/images/cic-logo.webp" width="250px" />
+    <img alt="Desafio CIC" title="Desafio CIC" src=".github/cic-logo.png" width="250px" />
 </h1>
 <h1 align="center">
     <a href="https://teste-cic.netlify.app/">
@@ -25,11 +25,14 @@
 </p>
 
 ## Funcionalidades
-:heavy_check_mark: Exibir todas as editoras junto com a média de avaliação dos seus livros : Funcionalidade Disponível ao Clicar sobre a Seta de Rolagem para baixo.
-:heavy_check_mark: Possibilidade de filtrar pelo nome da editora : Funcionalidade Disponível no Header da Tabela de todas as editoras.
+- :heavy_check_mark: Exibir todas as editoras junto com a média de avaliação dos seus livros : Funcionalidade Disponível ao Clicar sobre a Seta de Rolagem para baixo.
+
+- :heavy_check_mark: Possibilidade de filtrar pelo nome da editora : Funcionalidade Disponível no Header da Tabela de todas as editoras.
 :heavy_check_mark: Possibilidade de ordenar pelas editoras mais bem avaliadas : Ao clicar sobre o Header da tabela reorganizará os itens.
-:heavy_check_mark: Possibilidade de filtrar pelo título e nome da editora : Com o input de pesquisa é possivel realizar a pesquisa do título do livro.
-:heavy_check_mark: Possibilidade de ordenar pela média de avaliação ou pela data de
+
+- :heavy_check_mark: Possibilidade de filtrar pelo título e nome da editora : Com o input de pesquisa é possivel realizar a pesquisa do título do livro.
+
+- :heavy_check_mark: Possibilidade de ordenar pela média de avaliação ou pela data de
 publicação : Ao selecionar a tabela de todos os livros é possível ordenar da maneira que desejar.
 
 
