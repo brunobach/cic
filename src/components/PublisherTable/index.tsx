@@ -51,7 +51,7 @@ const defaultSorted: any = [{
 
   return (
     <Container>
-        <BootstrapTable classes="w-75 bordered mx-auto table-borderless table-dark shadow-lg p-3" defaultSorted={ defaultSorted }  bootstrap4 striped hover condensed keyField='id' data={tableData} columns={columns} />
+        <BootstrapTable classes="shadow-lg table-dark" defaultSorted={ defaultSorted }  bootstrap4 striped hover condensed keyField='id' data={tableData} columns={columns} />
     </Container>
   );
 }

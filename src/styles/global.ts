@@ -13,7 +13,8 @@ html, body, #root{
 body{
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
-    background: #fff;
+    background: #242D42;
+    
     font-family: 'Roboto', sans-serif !important;
     color: #fff;
 }

@@ -6,20 +6,27 @@ export const Container = styled.div`
   &.box{
       :first-child {
         margin-left: 5%;
-        background: linear-gradient(155deg, rgba(151,215,255,1) 0%, rgba(197,233,255,1) 96%);
+        background: linear-gradient(129deg, rgba(67,44,135,1) 0%, rgba(107,37,148,1) 98%);
+        box-shadow: -3px 29px 90px -26px rgba(128,29,186,1);
+      
+        :hover { 
+          box-shadow: -3px 29px 120px -26px rgba(128,29,186,1);
+        }
       }
       :last-child {
         margin-right: 5%;
-
-        background: linear-gradient(153deg, rgba(255,204,207,1) 0%, rgba(251,172,182,1) 96%);
+        background: linear-gradient(129deg, rgba(122,15,29,1) 0%, rgba(196,61,87,1) 98%);
+       
+        :hover {
+          box-shadow: -3px 29px 120px -26px rgba(196,61,87,1);
+        }
       }
-      background: linear-gradient(155deg, rgba(212,204,255,1) 0%, rgba(188,175,255,1) 96%);
+      background: linear-gradient(129deg, rgba(84,12,70,1) 0%, rgba(180,46,120,1) 98%);
+      box-shadow: -3px 29px 90px -26px rgba(135,21,113,1);
       margin-right: 10px;
       width: 40%;
       height: 30vh;
       border-radius: 15px;
-      -webkit-box-shadow: 0px 3px 19px -4px #000000; 
-      box-shadow: 0px 3px 9px -4px #000000;
    
   -webkit-animation-name: bounceInRight;
   animation-name: bounceInRight;
@@ -84,7 +91,11 @@ export const Container = styled.div`
   transform: none;
   }
   }
-    
+    :hover {
+      
+      box-shadow: -3px 29px 120px -26px rgba(135,21,113,1);
+      cursor: pointer;
+    }
   }
   &.none{
       :first-child{
@@ -94,54 +105,102 @@ export const Container = styled.div`
     justify-content: center;   
     width: 15%;
     height: 25vh;
+    :hover {
+            cursor: pointer;
+            border-radius: 18px;
+            background: #242D42;
+            box-shadow:  20px 20px 39px #1f2739;
+        }
+  }
+
+  &.Page {
+    margin-top: 5%;
+    width: 50%;
+    height: 40vh;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    background: linear-gradient(129deg, rgba(67,44,135,1) 0%, rgba(107,37,148,1) 98%);
+    box-shadow: -3px 29px 90px -26px rgba(128,29,186,1);
   }
 `;
 
 export const BookCover = styled.div`
     &.none {
+        > img {
+        border-radius: 10px;
+        width: auto;
+        max-width: 80px;
+        min-width: 10px;
+        
+        }
         cursor: pointer;
         width: 50%;
         height: 70%;
-        :hover {
-            background-color: #dfe1e5;
-            border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
-            border: 1px solid #dfe1e5;
-        }
     }
-    
+    width: auto;
+    max-width: 160px;
+    min-width: 100px;
     &.box {
-      min-width: 150px;
+      > img {
+      box-shadow: -3px 29px 70px -22px rgba(5,5,5,1);
+      border-radius: 10px;
+      max-width: 100%;
+     height: auto;
+    }
     }
 
-    background-color: #000f;
-    
-    height: 80%;
-    margin-top: 6%;
-    margin-left: 8%;
-    border-radius: 10px;
+    &.Page {
+      > img {
+      box-shadow: -3px 29px 70px -22px rgba(5,5,5,1);
+      border-radius: 10px;
+      max-width: 100%;
+     height: auto;
+    }
+    }
 
+    margin-top: 5%;
+    margin-left: 5%;
+    border-radius: 10px;
+    
 `
 export const Info = styled.div`
     margin-top: 10px;
+    margin-left: 10px;
 `
 export const TitleInfo = styled.div`
-p {
+&.none { 
+  p {
+    color: red;
+    font-size: 0.8rem;
+}
+span {
+  color: #aaa;
+  font-size: 0.7rem;
+}
+}
+&.box {
+  p {
     color: #ffff;
     font-size: 1.5rem;
     font-weight: 300;
   }
 span {
   color: #aaa;
-  margin-left:10px;
 }
+}
+
 `
 
 export const DetailInfo = styled.div`
-
 span{
-  margin-left: 10px;
-  color: #000;
+  font-family: Poppins;
+  color: #ffff;
+}
+
+&.none { 
+  span {
+    color: #fff;
+    font-size: 0.7rem;
+}
 }
 `

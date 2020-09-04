@@ -4,11 +4,13 @@ import  BootstrapTable from 'react-bootstrap-table-next'
 import filterFactory, {numberFilter, dateFilter, Comparator, textFilter} from 'react-bootstrap-table2-filter'
 import { useParams, useHistory } from 'react-router-dom';
 
-import { Container, BookViewer } from './styles';
+import { Container, BookViewer, BookContent, BookImage, BookInfo } from './styles';
 import Header from '../../components/Header'
 
-import data from '../../data/data'
+import publisher from '../../data/publisher'
+import BookBox from '../../components/BookBox'
 
+import api from '../../services/api'
 
 interface book {
     _id: string;
@@ -51,29 +53,47 @@ const BookPage: React.FC = () => {
     const { id } = useParams()
     const [book, setBook] = useState<book[]>([])
     const [dataTable, setDatable] = useState<book[]>([])
+    const [booksData, setBooksData] = useState<book[]>([])
+
     useEffect(() => {
-        const localData = localStorage.getItem('BooksViews')
+        async function loadData() {
+            const response = await api.get("books.json")
+            setBooksData(response.data); 
+        }
+        loadData();
+    }, [])
+
+    useEffect(() => {
         
-        if(localData === null){
-            localStorage.setItem('BooksViews', [id].toString())
-        }else if(localData.length < 14) {
-            const splitLength = localData.split(',')
+        const localData = localStorage.getItem('BooksViews')
+        let idData
+        booksData.filter((book, index) => {
+            if(book._id === id){
+                return idData = index
+            }  
+        })
+        if(localData === null && idData != undefined){
+            console.log('Aqui')
+            localStorage.setItem('BooksViews', idData)
+        }else if(localData && localData.length < 30 && idData != undefined) {
+            const splitLength = localData?.split(',')
             if(splitLength.length < 5){
-                localStorage.setItem('BooksViews', `${localData},${id}`)
+                console.log("lengt")
+                localStorage.setItem('BooksViews', `${localData},${idData}`)
+            }else {
+                console.log("Aqui")
+                const splitLengthRemove = localData.split(',')
+                splitLengthRemove.shift()
+                localStorage.setItem('BooksViews', `${splitLengthRemove},${idData}`)
             }
             
-        }else {
-            const splitLengthRemove = localData.split(',')
-            splitLengthRemove.shift()
-            localStorage.setItem('BooksViews', `${splitLengthRemove},${id}`)
         }
 
-        const result = data.filter((val) => val._id === id)
+        const result = booksData.filter((val) => val._id === id)
         setBook(result)
-        setDatable(data)
-        
             
-    }, [id])
+    }, [booksData, id])
+
     
     const tableRowEvents = {
         onClick: (e: any, row: book, rowIndex: any) => {
@@ -85,11 +105,16 @@ const BookPage: React.FC = () => {
   return (
     <Container>
         <Header />
-        <BookViewer>
-            {id === 'all' ? <BootstrapTable classes="tb-bootstrap w-75 center mx-auto table-borderless table-dark shadow p-3" bootstrap4 striped hover condensed rowEvents={tableRowEvents} keyField='_id' data={dataTable} columns={columns} filter={filterFactory()} /> : book.map((val) => (
-                <p key={val._id}>{val.title}</p>
+        {booksData.length > 1 ? <BookViewer>
+            {id === 'all' ? <BootstrapTable classes="tb-bootstrap w-75 center mx-auto table-borderless table-dark shadow p-3" bootstrap4 striped hover condensed rowEvents={tableRowEvents} keyField='_id' data={booksData} columns={columns} filter={filterFactory()} /> : book.map((val) => (
+                <BookContent>
+                    <BookImage></BookImage>
+                    <BookInfo>
+                    <BookBox title={book[0].title} stars={book[0].avgRatings} author={book[0].authors} publishing={publisher[Number(book[0].publisher)].name} variant="Page" ></BookBox> 
+                    </BookInfo>
+                </BookContent>
             ))}
-        </BookViewer>
+        </BookViewer> : 'Carregando'}
     </Container>
 );
 }

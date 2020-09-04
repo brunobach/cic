@@ -1,10 +1,11 @@
 import React,  {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom'
-import data from '../../data/data'
 
-import { Container, SearchYear, SearchInput, SearchContent, SearchItem } from './styles';
+import api from '../../services/api'
 
-interface Info {
+import { Container, SearchInput, SearchContent, SearchItem } from './styles';
+import Logo from '../../assets/logo.png'
+interface Books {
     _id: string
     title: string
     authors: string
@@ -17,13 +18,17 @@ interface Info {
 
 const Header: React.FC = () => {
     const history = useHistory()
-    const [dataInfo, setDataInfo] = useState<Info[]>([])
-    const [resultInfo, setResultInfo] = useState<Info[]>([])
+    const [dataInfo, setDataInfo] = useState<Books[]>([])
+    const [resultInfo, setResultInfo] = useState<Books[]>([])
     const [resultNone, setResultNone] = useState(false)
     const [searchText, setSerchText] = useState('')
     
     useEffect(() => {
-        setDataInfo(data);
+        async function loadData() {
+            const response = await api.get("books.json")
+            setDataInfo(response.data); 
+        }
+        loadData();
     }, [])
 
     useEffect(() => {
@@ -56,8 +61,8 @@ const Header: React.FC = () => {
 
     }
     return (
-        <Container className="shadow-sm p-5">
-            <SearchYear />
+        <Container >
+            <img onClick={() => history.push('/')} src={Logo} />
             <SearchInput  value={searchText} className={resultInfo.length > 1 ? 'search-activated mx-auto' : 'search-off mx-auto'} onChange={(e) => setSerchText(e.target.value)} placeholder="Pesquisar" />
             <SearchContent className="mx-auto">
             {resultInfo.map((val, index) => (

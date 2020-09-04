@@ -13,3 +13,7 @@ color: black;
     margin-top: 50px;
 }
 `
+
+export const BookImage = styled.div``
+export const BookContent = styled.div``
+export const BookInfo = styled.div``
