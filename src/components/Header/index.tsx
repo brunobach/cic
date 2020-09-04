@@ -5,6 +5,7 @@ import api from '../../services/api'
 
 import { Container, SearchInput, SearchContent, SearchItem } from './styles';
 import Logo from '../../assets/logo.png'
+/* eslint-disable */
 interface Books {
     _id: string
     title: string
@@ -42,7 +43,6 @@ const Header: React.FC = () => {
 
 
     function filterRecord(record: string){
-        console.log(record.length)
         if(record.length === 0) {
           return setResultNone(true)
         }

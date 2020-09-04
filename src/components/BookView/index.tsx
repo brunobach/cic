@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+/* eslint-disable */
 import { Container, ContentBook, ContentBrowse, TopPublishingHouse, PublishingHouse } from './styles';
 import {url} from '../../data/url'
 import BookBox from '../BookBox'
@@ -89,7 +89,7 @@ const BookView: React.FC = () => {
             let name = curr.publisher
 
             if (!prev.hasOwnProperty(name)) {
-                // @ts-ignore 
+                /* eslint-disable */
                 prev[name] = 0
             }
             // @ts-ignore

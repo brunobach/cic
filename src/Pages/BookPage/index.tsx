@@ -48,7 +48,7 @@ const columns = [{
     sort: true,
     filter: dateFilter({ defaultValue: {date: new Date(2020, 0, 1), comparator: Comparator.LT}})
 }]
-
+/* eslint-disable */
 const BookPage: React.FC = () => {
     const history = useHistory()
     const { id } = useParams()
@@ -72,10 +72,10 @@ const BookPage: React.FC = () => {
                 return idData = index
             }  
         })
-        if(localData === null && idData != undefined){
+        if(localData === null && idData !== undefined){
             console.log('Aqui')
             localStorage.setItem('BooksViews', idData)
-        }else if(localData && localData.length < 30 && idData != undefined) {
+        }else if(localData && localData.length < 30 && idData !== undefined) {
             const splitLength = localData?.split(',')
             if(splitLength.length < 5){
                 console.log("lengt")

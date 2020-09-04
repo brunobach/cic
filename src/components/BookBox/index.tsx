@@ -18,7 +18,7 @@ const BookBox: React.FC<Props> = ({variant, title, author, publishing, stars, id
   return (
   <Container onClick={() => history.push(`/book/${id}`)} className={variant}>
       <BookCover className={variant}>
-          <img src={url || 'https://developerplus.com.br/wp-content/uploads/2019/05/clean-code-642x1024.png'} />
+          <img src={url || 'https://developerplus.com.br/wp-content/uploads/2019/05/clean-code-642x1024.png'} alt="Cover Livro"/>
       </BookCover>
       <Info>
           <TitleInfo className={variant}>

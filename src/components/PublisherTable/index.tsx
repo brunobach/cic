@@ -1,23 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import  BootstrapTable from 'react-bootstrap-table-next'
-import filterFactory, {numberFilter} from 'react-bootstrap-table2-filter'
 
- import { Container } from './styles';
+import { Container } from './styles';
 
-interface IData {
-  id: number,
-  valor: number,
-  name: string,
-  books: []
-}
 
 interface Props {
   data: any
 }
 
 const PublisherTable: React.FC<Props> = ({data}) => {
-
+/* eslint-disable */
   const [tableData, setTableData] = useState([])
 
   useEffect(() => {
@@ -42,8 +35,9 @@ const PublisherTable: React.FC<Props> = ({data}) => {
     sort: true
     
 }]
+
 const defaultSorted: any = [{
-  dataField: 'books',
+  dataField: 'valor',
   order: 'desc'
 }];
 
