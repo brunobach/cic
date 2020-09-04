@@ -8,6 +8,7 @@ import { Container, BookViewer, BookContent, BookImage, BookInfo } from './style
 import Header from '../../components/Header'
 
 import publisher from '../../data/publisher'
+import {url} from '../../data/url'
 import BookBox from '../../components/BookBox'
 
 import api from '../../services/api'
@@ -52,7 +53,6 @@ const BookPage: React.FC = () => {
     const history = useHistory()
     const { id } = useParams()
     const [book, setBook] = useState<book[]>([])
-    const [dataTable, setDatable] = useState<book[]>([])
     const [booksData, setBooksData] = useState<book[]>([])
 
     useEffect(() => {
@@ -110,11 +110,11 @@ const BookPage: React.FC = () => {
                 <BookContent>
                     <BookImage></BookImage>
                     <BookInfo>
-                    <BookBox title={book[0].title} stars={book[0].avgRatings} author={book[0].authors} publishing={publisher[Number(book[0].publisher)].name} variant="Page" ></BookBox> 
+                    <BookBox title={book[0].title} url={url[id]} stars={book[0].avgRatings} author={book[0].authors} publishing={publisher[Number(book[0].publisher)].name} variant="Page" ></BookBox> 
                     </BookInfo>
                 </BookContent>
             ))}
-        </BookViewer> : 'Carregando'}
+        </BookViewer> : <div className="ml-5 spinner-grow text-success"> </div>}
     </Container>
 );
 }

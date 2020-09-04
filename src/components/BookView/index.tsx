@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Container, ContentBook, ContentBrowse, TopPublishingHouse, PublishingHouse } from './styles';
-import publisher from '../../data/publisher'
+import {url} from '../../data/url'
 import BookBox from '../BookBox'
 import PublisherTable from '../PublisherTable'
 import api from '../../services/api'
@@ -17,6 +17,11 @@ interface book {
     publisher: string;
 }
 
+interface publisher {
+    _id: string;
+    name: string;
+}
+
 const BookView: React.FC = () => {
 
     const [info, setInfo] = useState([0, 0, 0])
@@ -27,13 +32,21 @@ const BookView: React.FC = () => {
     const [recentView, setRecentView] = useState<string[]>([])
     const [idRealData, setIdRealData] = useState([])
     const [booksData, setBooksData] = useState<book[]>([])
-
+    const [publisherData, setPublisherData] = useState<publisher[]>([])
     useEffect(() => {
         async function loadData() {
-            const response = await api.get("books.json")
-            setBooksData(response.data); 
+            const response = await api.get("books.json")       
+            setBooksData(response.data) 
         }
         loadData();
+    }, [])
+
+    useEffect(()=> {
+        async function loadPublisher() {
+            const responsePublisher = await api.get("publishers.json")
+            setPublisherData(responsePublisher.data)
+        }
+        loadPublisher();
     }, [])
 
 
@@ -130,7 +143,7 @@ const BookView: React.FC = () => {
             let item = {
                 id: index,
                 valor: val.toFixed(2),
-                name: publisher[index].name,
+                name: publisherData[index].name,
                 books: bks
             }
 
@@ -148,9 +161,9 @@ const BookView: React.FC = () => {
             {booksData.length > 1 ? <>
             <p className="ml-5">Recomendacoes</p>
             <ContentBook>
-                <BookBox title={booksData[info[0]].title} id={Number(booksData[info[0]]._id)} stars={booksData[info[0]].avgRatings || 5} author={booksData[info[0]].authors} publishing={publisher[Number(booksData[info[0]].publisher)].name} variant="box"></BookBox>
-                <BookBox title={booksData[info[1]].title} id={Number(booksData[info[1]]._id)} stars={booksData[info[1]].avgRatings || 5} author={booksData[info[1]].authors} publishing={publisher[Number(booksData[info[1]].publisher)].name} variant="box"></BookBox>
-                <BookBox title={booksData[info[2]].title} id={Number(booksData[info[2]]._id)} stars={booksData[info[2]].avgRatings || 5} author={booksData[info[2]].authors} publishing={publisher[Number(booksData[info[2]].publisher)].name} variant="box"></BookBox>
+                <BookBox title={booksData[info[0]].title} id={Number(booksData[info[0]]._id)} url={url[info[0]]} stars={booksData[info[0]].avgRatings || 5} author={booksData[info[0]].authors} publishing={publisherData[Number(booksData[info[0]].publisher)].name} variant="box"></BookBox>
+                <BookBox title={booksData[info[1]].title} id={Number(booksData[info[1]]._id)} url={url[info[1]]} stars={booksData[info[1]].avgRatings || 5} author={booksData[info[1]].authors} publishing={publisherData[Number(booksData[info[1]].publisher)].name} variant="box"></BookBox>
+                <BookBox title={booksData[info[2]].title} id={Number(booksData[info[2]]._id)} url={url[info[2]]} stars={booksData[info[2]].avgRatings || 5} author={booksData[info[2]].authors} publishing={publisherData[Number(booksData[info[2]].publisher)].name} variant="box"></BookBox>
             </ContentBook>
             <div className="ml-5 btn-group">
                 {viewTable ? <p>Todas Editoras</p> : <p>Recentes</p> }
@@ -164,7 +177,7 @@ const BookView: React.FC = () => {
                 <ContentBrowse>
 
                     {recentView.length > 1 ?  recentView.map((recent, index)=> (
-                        <BookBox title={booksData[Number(recent)].title} id={idRealData[index]} stars={booksData[Number(recent)].avgRatings || 5} author={booksData[Number(recent)].authors} publishing={publisher[Number(booksData[recent].publisher)].name} variant="none"></BookBox>
+                        <BookBox title={booksData[Number(recent)].title} url={url[recent]} id={idRealData[index]} stars={booksData[Number(recent)].avgRatings || 5} author={booksData[Number(recent)].authors} publishing={publisherData[Number(booksData[recent].publisher)].name} variant="none"></BookBox>
                     )) : <p className="mx-auto">Que Pena... Você ainda nao tem recentes</p>}
                     
                     <TopPublishingHouse>
@@ -172,7 +185,7 @@ const BookView: React.FC = () => {
 
                         {
                             topPublisher.map((val) => (
-                                <PublishingHouse> <p>{publisher[Number(val)].name} com {booksPublisher[Number(val)]} livros </p></PublishingHouse>
+                                <PublishingHouse> <p>{publisherData[Number(val)].name} com {booksPublisher[Number(val)]} livros </p></PublishingHouse>
                             ))
                         }
 
@@ -182,7 +195,7 @@ const BookView: React.FC = () => {
                     </button>
                 </ContentBrowse>
 
-            } </> : 'Carregando'}
+            } </> : <div className="ml-5 spinner-grow text-success"> </div>}
             
         </Container>
     );

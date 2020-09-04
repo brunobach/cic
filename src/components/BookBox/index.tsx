@@ -10,14 +10,15 @@ interface Props {
     publishing: string
     stars?: number
     id?: number
+    url?: string
 }
 
-const BookBox: React.FC<Props> = ({variant, title, author, publishing, stars, id}) => {
+const BookBox: React.FC<Props> = ({variant, title, author, publishing, stars, id, url}) => {
   const history = useHistory()
   return (
   <Container onClick={() => history.push(`/book/${id}`)} className={variant}>
       <BookCover className={variant}>
-          <img src="https://images-na.ssl-images-amazon.com/images/I/91MbLmqat8L._SL1500_.jpg" />
+          <img src={url || 'https://developerplus.com.br/wp-content/uploads/2019/05/clean-code-642x1024.png'} />
       </BookCover>
       <Info>
           <TitleInfo className={variant}>
